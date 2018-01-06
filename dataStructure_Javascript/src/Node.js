@@ -1,5 +1,10 @@
+
+
 export class Node{
-	constructor(data){
+	constructor(data = 0){
+		if (arguments.length >1){
+			throw new Error("too many argument variables");
+		} 
 		this.data = data;
 		this.next = null;
 	}
@@ -16,4 +21,5 @@ export class Node{
 		this.next = newNext;
 	}
 }
+
 
