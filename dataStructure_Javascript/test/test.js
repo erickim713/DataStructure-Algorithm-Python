@@ -4,6 +4,7 @@ import assert from 'assert';
 import { Node } from '../src/Node';
 import { LinkedList } from '../src/Linkedlist';
 import { Stack } from '../src/Stack';
+import { Queue } from '../src/Queue';
 
 
 
@@ -136,7 +137,7 @@ describe('Data Structure Test', function() {
         });
     });
     // Stack.js Tests
-    describe("> Stacks Tests:", function(){
+    describe("> Stack Tests:", function(){
         describe('> testing constructor()', function(){
             it('#checking normal constructor', function(){
                 let stack = new Stack();
@@ -209,11 +210,90 @@ describe('Data Structure Test', function() {
                 assert.equal(stack.size, 0);
                 assert.equal(stack.isEmpty(), true);
             });
-        })
+        });
     });
-
-    //
-
-    
+    // Queue.js tests
+    describe('> Queue Tests', function(){
+        describe('> testing constructor()',function(){
+            it('#creating a normal queue without any input argument should have size 0',function(){
+                let queue = new Queue();
+                assert.equal(queue.size, 0);
+            });
+            it('#creating a queue with input: should throw an error', function(){
+                assert.throws(function(){
+                    let queue = new Queue([4, 5]);
+                }, Error, 'does not take input');
+            });
+        })
+        describe('> testing enqueue()',function(){
+            it('#enqueue with no data input: should throw an error', function(){
+                assert.throws(function(){
+                    let queue = new Queue();
+                    queue.enqueue();
+                }, Error, 'needs an input data');
+            });
+            it('#enqueue with multiple data input: should throw an error', function(){
+                assert.throws(function(){
+                    let queue = new Queue();
+                    queue.enqueue(2, 5);
+                }, Error, 'does not take multiple inputs');
+            });
+            it('#enqueue with one input: should have size based on n input',function(){
+                let queue = new Queue();
+                for (let i = 0; i < 4; i++) {
+                    queue.enqueue(i);
+                }
+                assert.equal(queue.size, 4);
+            });
+        });
+        describe('> testing dequeue()',function(){
+            it('#dequeuing with no data input: should dequeue based on FIFO rule', function(){
+                let queue = new Queue();
+                for (let i = 0; i < 4; i++) {
+                    queue.enqueue(i);
+                }
+                assert.equal(queue.dequeue(), 0);
+            });
+            it('#dequeuing with no data input multiple times: should dequeue based on FIFO rule', function(){
+                let queue = new Queue();
+                for (let i = 0; i < 4; i++) {
+                    queue.enqueue(i);
+                }
+                assert.equal(queue.dequeue(), 0);
+                assert.equal(queue.dequeue(), 1);
+            });
+            it('#dequeuing with data input: should throw an error', function(){
+                assert.throws(function(){
+                    let queue = new Queue();
+                    queue.enqueue(4);
+                    queue.dequeue(4);
+                }, Error, 'no argument is needed');
+            });
+            it('dequeuing when there is no data in queue: should throw an error', function(){
+                assert.throws(function(){
+                    let queue = new Queue();
+                    queue.dequeue();
+                }, Error, 'cannot dequeue from an empty queue');
+            });
+        });
+        describe('> testing show()', function(){
+            it('#showing with an argument: should throw an error', function(){
+                assert.throws(function(){
+                    let queue = new Queue();
+                    queue.show(true);
+                }, Error, 'no arguments needed');
+            });
+            it('#showing with no argument: should return a list with expected result', function(){
+                let queue = new Queue();
+                queue.enqueue(6);
+                queue.enqueue(5);
+                let expectedQueue = [6, 5];
+                let resultQueue = queue.show()
+                for(const index in resultQueue){
+                    assert.equal(expectedQueue[index], resultQueue[index]);
+                }
+            });
+        });
+    });
 });
 
