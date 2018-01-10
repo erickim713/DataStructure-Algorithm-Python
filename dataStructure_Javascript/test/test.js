@@ -5,6 +5,7 @@ import { Node } from '../src/Node';
 import { LinkedList } from '../src/Linkedlist';
 import { Stack } from '../src/Stack';
 import { Queue } from '../src/Queue';
+import { Deque } from '../src/DQueue';
 
 
 
@@ -295,5 +296,71 @@ describe('Data Structure Test', function() {
             });
         });
     });
+    describe('> Deque tests', function(){
+        describe('> testing constructor()',function(){
+            it('#normal constructor: should have empty queue with size of 0', function(){
+                let deque = new Deque();
+                assert.equal(deque.size, 0);
+                assert.equal(deque.queue.length, 0);
+            });
+            it('#no arguments allowed: should throw an error', function(){
+                assert.throws(function(){
+                    let deque = new Deque(5);                
+                },Error, 'no arguments allowed');
+            });
+        });
+        describe('> testing append()',function(){
+            it('#appending with no data input: should throw an error', function(){
+                assert.throws(function(){
+                    let deque = new Deque();
+                    deque.append();
+                }, Error, 'need an argument inside the method');
+            });
+            it('#appending with data: should increase the size and add it to the end of the deque',function(){
+                let deque = new Deque();
+                deque.append(5);
+                assert.equal(deque.size, 1);
+                deque.append(1);
+                assert.equal(deque.queue[1], 1);
+            });
+            it('#appending with more than one arguments: should throw an error',function(){
+                assert.throws(function(){
+                    let deque = new Deque();
+                    deque.append(5, 4);
+                }, Error, 'need an argument inside');
+            });
+        });
+        describe('> testing prepend()',function(){
+            it('#prepending with no data input: should thrown an error', function(){
+                assert.throws(function(){
+                    let deque = new Deque();
+                    deque.prepend();
+                }, Error, 'need an argument inside the method');
+            });
+            it('#prepending with data input should increase the size and add it to the front of the deque',function(){
+                let deque =  new Deque();
+                deque.prepend(5);
+                assert.equal(deque.size, 1);
+                deque.prepend(1);
+                assert.equal(deque.queue[0], 1);
+            });
+            it('#prepending with more than one arguments: should throw an error',function(){
+                assert.throws(function(){
+                    let deque = new Deque();
+                    deque.prepend(5, 4);
+                }, Error, 'need an argument inside');
+            });
+        });
+        describe('> testing deleteLast()',function(){
+            it('#deleting last element should reduce size and actually delete the last element', function(){
+                let deque = new Deque();
+                deque.append(5);
+                deque.append(3);
+                deque.deleteLast();
+                assert.equal(deque.size, 1);
+                assert.equal(deque.queue[deque.size - 1], 5);
+            });
+        });
+    })
 });
 
