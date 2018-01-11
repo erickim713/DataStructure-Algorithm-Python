@@ -360,7 +360,47 @@ describe('Data Structure Test', function() {
                 assert.equal(deque.size, 1);
                 assert.equal(deque.queue[deque.size - 1], 5);
             });
+            it('# deleting last element when deque is empty: should throw an error', function(){
+                assert.throws(function(){
+                    let deque = new Deque();
+                    deque.deleteLast();
+                }, Error, 'Deque is empty');
+            });
         });
-    })
+        describe('> testing deleteFirst()',function(){
+            it('#deleting first element: should reduce size and actually delete the first element', function(){
+                let deque = new Deque();
+                deque.append(3);
+                deque.append(77);
+                deque.deleteFirst();
+                assert.equal(deque.size, 1);
+                assert.equal(deque.queue[deque.size - 1], 77);
+            });
+            it('# deleting first element when deque is empty: should throw an error', function(){
+                assert.throws(function(){
+                    let deque = new Deque();
+                    deque.deleteFirst();
+                }, Error, 'Deque is empty');
+            });
+        });
+        describe('> testing isEmpty()', function(){
+            it('#inputting any argument: should throw an Error',function(){
+                assert.throws(function(){
+                    let deque = new Deque();
+                    if(deque.isEmpty(4)){
+                        console.log("should not reach this place");
+                    }
+                }, Error, 'no argument is allowed');
+            });
+            it('#checking empty: should return true or false', function(){
+                let deque = new Deque();
+                assert.equal(deque.isEmpty(), true);
+                deque.append(5);
+                assert.equal(deque.isEmpty(), false);
+                deque.deleteFirst();
+                assert.equal(deque.isEmpty(), true);                
+            });
+        });
+    });
 });
 
