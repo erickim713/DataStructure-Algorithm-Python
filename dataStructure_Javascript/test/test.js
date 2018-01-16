@@ -6,6 +6,7 @@ import { LinkedList } from '../src/Linkedlist';
 import { Stack } from '../src/Stack';
 import { Queue } from '../src/Queue';
 import { Deque } from '../src/DQueue';
+import { BST } from '../src/BST';
 
 
 
@@ -402,5 +403,68 @@ describe('Data Structure Test', function() {
             });
         });
     });
+    // let's do tree now.
+    describe('> Tree Tests', function(){
+        describe('> testing constructor()', function(){
+            it('#constructor: should create BST with root as null and size of 0', function(){
+                let bst = new BST();
+                assert.equal(bst.root, null);
+                assert.equal(bst.size, 0);
+            });
+            it('#constructor multiple input: should throw error', function(){
+                assert.throws(
+                    function(){
+                        let bst = new BST(4);
+                    },
+                    Error,
+                    'no parameters are allowed'
+                );
+            });
+        });
+
+        describe('> testing insert()', function(){
+            it('#inserting first data: should be the new root', function(){
+                let bst = new BST();
+                bst.insert(5);
+                assert.equal(bst.root.getData(), 5);
+                bst.insert(3);
+                assert.equal(bst.root.leftChild.getData(), 3);
+                assert.equal(bst.size, 2);
+            });
+            it('#not using insert function with one parameter input: should throw an error', function(){
+                assert.throws(
+                    function(){
+                        let bst = new BST();
+                        bst.insert();
+                    },
+                    Error,
+                    'wrong number of parameters'
+                );
+                assert.throws(
+                    function(){
+                        let bst = new BST();
+                        bst.insert(4,3);
+                    },
+                    Error,
+                    'wrong number of parameters'
+                );
+            });
+        });
+        describe('> testing remove()', function(){
+            it('#normal remove: should remove the first element detected on BST', function(){
+                let bst = new BST();
+                bst.insert(5);
+                bst.insert(4);
+                bst.insert(2);
+                assert.equal(bst.root.getData(), 5);
+                assert.equal(bst.root.leftChild.getData(), 4);
+                assert.equal(bst.root.leftChild.leftChild.getData(), 2);
+                bst.remove(4);
+                assert.equal(bst.root.leftChild.getData(), 2);
+                assert.equal(bst.root.leftChild.leftChild, null);
+                assert.equal(bst.size, 2);
+            });
+        })
+    })
 });
 
