@@ -464,7 +464,14 @@ describe('Data Structure Test', function() {
                 assert.equal(bst.root.leftChild.leftChild, null);
                 assert.equal(bst.size, 2);
             });
-        })
+            it('#trying to remove what is not there: should throw an error', function(){
+                assert.throws(function(){
+                    let bst = new BST();
+                    bst.insert(5);
+                    bst.remove(4);
+                }, Error, 'not in BST tree');
+            });
+        });
     })
 });
 
