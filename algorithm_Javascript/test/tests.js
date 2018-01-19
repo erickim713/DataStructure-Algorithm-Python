@@ -1,6 +1,7 @@
 import assert from 'assert';
 import { TwoSum } from '../src/TwoSum';
 import { ListNode, addTwoNumber } from '../src/AddTwoNumber';
+import { LongestSubstringWithoutRepeatingCharacters } from '../src/LSWRC';
 
 describe('> Problem TwoSum: #Easy', function(){
     it('target 4, listofNums[4, 3, 2, 0]: should return [0, 3]',function(){
@@ -22,9 +23,7 @@ describe('> Problem AddTwoNumber: #Easy', function(){
         let x = new ListNode(2);
         x.next = new ListNode(4);
         x.next.next = new ListNode(3);
-        // console.log(x.val);
-        // console.log(x.next.val);
-        // console.log(x.next.next.val);
+
         let y = new ListNode(5);
         y.next = new ListNode(6);
         y.next.next = new ListNode(4);
@@ -41,7 +40,7 @@ describe('> Problem AddTwoNumber: #Easy', function(){
         }
     });
 
-    it('1-> 0 -> 0 -> 1 + 2-> 4 ->3: should equal 2 -> 4 -> 3 -> 1: explanation: 1001+ 342 = 1343', function(){
+    it('1-> 0 -> 0 -> 1 + 2-> 4 ->3: should equal 2 -> 4 -> 3 -> 1 (explanation: 1001+ 342 = 1343)', function(){
         // testing for different number of digits on each of them;
         let x = new ListNode(1);
         x.next = new ListNode(0);
@@ -65,7 +64,7 @@ describe('> Problem AddTwoNumber: #Easy', function(){
             answer = answer.next;
         }
     });
-    it('5 + 5 = 0 -> 1', function(){
+    it('5 + 5: should equal 0 -> 1 (explanation: 5 + 5 = 10)', function(){
         let x = new ListNode(5);
         let y = new ListNode(5);
         let answer = new ListNode(0);
@@ -78,7 +77,7 @@ describe('> Problem AddTwoNumber: #Easy', function(){
             answer = answer.next;
         }
     });
-    it('1 + 99 = 0 -> 0 -> 1', function(){
+    it('1 + 9 -> 9: should equal 0 -> 0 -> 1 (explanation  1 + 99 = 100)', function(){
         let x = new ListNode(1);
         let y = new ListNode(9);
         y.next = new ListNode(9);
@@ -93,4 +92,35 @@ describe('> Problem AddTwoNumber: #Easy', function(){
             answer = answer.next;
         }
     });
+});
+
+describe('> Longest Substring Without Repeating Characters:', function(){
+    // given test cases
+    it('abcabcbb: should return 3', function(){
+        let answer = 3;
+        let actual = LongestSubstringWithoutRepeatingCharacters('abcabcbb');
+        assert.equal(actual, answer);
+    });
+    it('bbbbbbb: should return 1', function(){
+        let answer = 1;
+        let actual = LongestSubstringWithoutRepeatingCharacters('bbbbbbb');
+        assert.equal(actual, answer);
+    });
+    it('pwwkew: should return 3', function(){
+        let answer = 3;
+        let actual = LongestSubstringWithoutRepeatingCharacters('pwwkew');
+        assert.equal(actual, answer);        
+    });
+    // my own test cases
+    it('empty string should return 0', function(){
+        let answer = 0;
+        let actual = LongestSubstringWithoutRepeatingCharacters('');
+        assert.equal(actual, answer);
+    });
+
+    it('abcba: should return 3', function(){
+        let answer = 3;
+        let actual = LongestSubstringWithoutRepeatingCharacters('abcba');
+        assert.equal(actual, answer);
+    })
 })
