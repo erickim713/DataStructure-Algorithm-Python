@@ -2,6 +2,7 @@ import assert from 'assert';
 import { TwoSum } from '../src/TwoSum';
 import { ListNode, addTwoNumber } from '../src/AddTwoNumber';
 import { LongestSubstringWithoutRepeatingCharacters } from '../src/LSWRC';
+import { longestPalindromicSubstring } from '../src/LPS';
 
 describe('> Problem TwoSum: #Easy', function(){
     it('target 4, listofNums[4, 3, 2, 0]: should return [0, 3]',function(){
@@ -122,5 +123,35 @@ describe('> Longest Substring Without Repeating Characters:', function(){
         let answer = 3;
         let actual = LongestSubstringWithoutRepeatingCharacters('abcba');
         assert.equal(actual, answer);
-    })
+    });
+});
+
+// input is string
+// output is string
+describe('> Longest Palindromic Substring:',function(){
+    it('input babad: should return bab or aba', function(){
+        let answer = 'bab';
+        let actual = longestPalindromicSubstring('babad');
+        assert.equal(actual, answer);
+    });
+    it('input cbbd: should return bb', function(){
+        let answer = 'bb';
+        let actual = longestPalindromicSubstring('cbbd');
+        assert.equal(actual, answer);
+    });
+    it('input empty string: should return empty string', function(){
+        let answer = '';
+        let actual = longestPalindromicSubstring('');
+        assert.equal(actual, answer);
+    });
+    it('input single quote: should return that quote', function(){
+        let answer = 'a';
+        let actual = longestPalindromicSubstring('a');
+        assert.equal(actual, answer);
+    });
+    it('input abceeecbaqw: should return abceeecba', function(){
+        let answer = 'abceeecba';
+        let actual = longestPalindromicSubstring('abceeecbaqw');
+        assert.equal(actual, answer);
+    });
 })
