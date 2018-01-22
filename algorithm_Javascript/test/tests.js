@@ -3,6 +3,8 @@ import { TwoSum } from '../src/TwoSum';
 import { ListNode, addTwoNumber } from '../src/AddTwoNumber';
 import { LongestSubstringWithoutRepeatingCharacters } from '../src/LSWRC';
 import { longestPalindromicSubstring } from '../src/LPS';
+import { ZigZagConversion } from '../src/ZigZagConversion';
+import { reverse } from '../src/reverseInteger';
 
 describe('> Problem TwoSum: #Easy', function(){
     it('target 4, listofNums[4, 3, 2, 0]: should return [0, 3]',function(){
@@ -154,4 +156,65 @@ describe('> Longest Palindromic Substring:',function(){
         let actual = longestPalindromicSubstring('abceeecbaqw');
         assert.equal(actual, answer);
     });
+});
+
+
+describe('> ZigZag Conversion: ', function(){
+    it('input PAYPALISHIRING with 3 rows: should return PAHNAPLSIIGYIR', function(){
+        let answer = 'PAHNAPLSIIGYIR';
+        let actual = ZigZagConversion('PAYPALISHIRING', 3);
+        assert.equal(actual, answer);
+    });
+
+    it('input WHYISDANIELNOTPICKINGUPTHEPHONE with 2 rows: should return WYSAILOPCIGPHPOEHIDNENTIKNUTEHN', function(){
+        let answer = 'WYSAILOPCIGPHPOEHIDNENTIKNUTEHN';
+        let actual = ZigZagConversion('WHYISDANIELNOTPICKINGUPTHEPHONE', 2);
+        assert.equal(actual, answer);
+    });
+
+    it('input TESTINGTHESINGLEROWCASE with 1 row: should return TESTINGTHESINGLEROWCASE', function(){
+        let answer = 'TESTINGTHESINGLEROWCASE';
+        let actual = ZigZagConversion(answer, 1);
+        assert.equal(actual, answer);
+    });
+
+    it('input "" with 4 rows: should return ""', function(){
+        let answer = '';
+        let actual = ZigZagConversion('', 4);
+        assert.equal(actual, answer);
+    });
+});
+
+
+describe('> Reverse Integer: ', function(){
+    it('input 123: should return 321', function(){
+        let answer = 321;
+        let actual = reverse(123);
+        assert.equal(actual, answer);
+    });
+    it('input -123: should return -321', function(){
+        let answer = -321;
+        let actual = reverse(-123);
+        assert.equal(actual, answer);
+    });
+    it('input 120: should return 21', function(){
+        let answer = 21;
+        let actual = reverse(120);
+        assert.equal(actual, answer);
+    });
+    it('input 0: should return 0', function(){
+        let answer = 0;
+        let actual = reverse(0);
+        assert.equal(actual, answer);
+    });
+    it('input -120: should return -21', function(){
+        let answer = -21;
+        let actual = reverse(-120);
+        assert.equal(actual, answer);
+    });
+    it('input 1201: should return 1021', function(){
+        let answer = 1021;
+        let actual = reverse(1201);
+        assert.equal(actual, answer)
+    })
 })
