@@ -216,5 +216,5 @@ describe('> Reverse Integer: ', function(){
         let answer = 1021;
         let actual = reverse(1201);
         assert.equal(actual, answer)
-    })
-})
+    });
+});
