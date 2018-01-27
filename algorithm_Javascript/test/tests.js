@@ -5,6 +5,9 @@ import { LongestSubstringWithoutRepeatingCharacters } from '../src/LSWRC';
 import { longestPalindromicSubstring } from '../src/LPS';
 import { ZigZagConversion } from '../src/ZigZagConversion';
 import { reverse } from '../src/reverseInteger';
+import { PalindromeNumber } from '../src/PalindromeNumber';
+import { IntegertoRomanNumeral } from '../src/IntegertoRomanNumeral';
+import { ContainerWithMostWater } from '../src/ContainerWithMostWater';
 
 describe('> Problem TwoSum: #Easy', function(){
     it('target 4, listofNums[4, 3, 2, 0]: should return [0, 3]',function(){
@@ -128,8 +131,6 @@ describe('> Longest Substring Without Repeating Characters:', function(){
     });
 });
 
-// input is string
-// output is string
 describe('> Longest Palindromic Substring:',function(){
     it('input babad: should return bab or aba', function(){
         let answer = 'bab';
@@ -158,7 +159,6 @@ describe('> Longest Palindromic Substring:',function(){
     });
 });
 
-
 describe('> ZigZag Conversion: ', function(){
     it('input PAYPALISHIRING with 3 rows: should return PAHNAPLSIIGYIR', function(){
         let answer = 'PAHNAPLSIIGYIR';
@@ -184,7 +184,6 @@ describe('> ZigZag Conversion: ', function(){
         assert.equal(actual, answer);
     });
 });
-
 
 describe('> Reverse Integer: ', function(){
     it('input 123: should return 321', function(){
@@ -216,5 +215,105 @@ describe('> Reverse Integer: ', function(){
         let answer = 1021;
         let actual = reverse(1201);
         assert.equal(actual, answer)
+    });
+});
+
+describe('> Palindrome Number: ', function(){
+    it('input: 1234321 should return true', function(){
+        let answer = true;
+        let actual = PalindromeNumber(1234321);
+        assert.equal(actual, answer);
+    });
+    it('input: 1001 should return true', function(){
+        let answer = true;
+        let actual = PalindromeNumber(1001);
+        assert.equal(actual, answer);
+    });
+    it('input: -10001 should return false', function(){
+        let answer = false;
+        let actual = PalindromeNumber(-10001);
+        assert.equal(actual, answer);
+    });
+    it('input: -22 should return false', function(){
+        let answer = false;
+        let actual = PalindromeNumber(-22);
+        assert.equal(actual, answer);
+    });
+    it('input: -2233 should return false', function(){
+        let answer = false;
+        let actual = PalindromeNumber(-2233);
+        assert.equal(actual, answer);
+    }); 
+    it('input: 100 should return false', function(){
+        let answer = false;
+        let actual = PalindromeNumber(100);
+        assert.equal(actual, answer);
+    });
+    it('input: 0 should return true', function(){
+        let answer = true;
+        let actual = PalindromeNumber(0);
+        assert.equal(actual, answer);
+    })
+});
+
+describe('> Continer with Most Water: ', function(){
+    it('input [3, 6]: should return 3', function(){
+        let answer = 3;
+        let actual = ContainerWithMostWater([3, 6]);
+        assert.equal(actual, answer);
+    });
+    it('input [1, 4, 6, 3, 1]: should return 6', function(){
+        let answer = 6;
+        let actual = ContainerWithMostWater([1, 4, 6, 3, 1]);
+        assert.equal(actual, answer);
+    });
+    it('input [100, 4, 6, 3, 1]: should return 12', function(){
+        let answer = 12;
+        let actual = ContainerWithMostWater([100, 4, 6, 3, 1]);
+        assert.equal(actual, answer);
+    });
+});
+
+describe('> Integer to Roman Numeral', function(){
+    //basic test cases
+    it('input: 1 should return "I"',function(){
+        let answer  = 'I';
+        let actual = IntegertoRomanNumeral(1);
+        assert.equal(actual, answer);
+    });
+    it('input: 10 should return "X"',function(){
+        let answer  = 'X';
+        let actual = IntegertoRomanNumeral(10);
+        assert.equal(actual, answer);
+    });
+    it('input: 1000 should return "M"',function(){
+        let answer  = 'M';
+        let actual = IntegertoRomanNumeral(1000);
+        assert.equal(actual, answer);
+    });
+    //test case: [no subtraction needed]
+    it('input: 231 should return "CCXXXI"',function(){
+        let answer  = 'CCXXXI';
+        let actual = IntegertoRomanNumeral(231);
+        assert.equal(actual, answer);
+    });
+    it('input: 566 should return "DLXVI"',function(){
+        let answer  = 'DLXVI';
+        let actual = IntegertoRomanNumeral(566);
+        assert.equal(actual, answer);
+    });
+
+    //test case: [subtraction needed]
+    it('input 444 should return "CDXLIV"', function(){
+        let answer = 'CDXLIV';
+        let actual = IntegertoRomanNumeral(444);
+        assert.equal(actual, answer);
+        
+    });
+    it('input 99 should return "XCIX"', function(){
+        let answer = 'XCIX';
+        let actual = IntegertoRomanNumeral(99);
+        assert.equal(actual, answer);
+        
     });
 });

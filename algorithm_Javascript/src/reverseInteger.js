@@ -37,5 +37,8 @@ export function reverse(x) {
             multiplier = multiplier * 10;
         }
     }
+    if(answer > Math.pow(2, 31) -1 || answer < Math.pow(2, 31) * -1){
+        return 0;
+    }
     return answer;
 };
