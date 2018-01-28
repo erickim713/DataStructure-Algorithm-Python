@@ -8,6 +8,7 @@ import { reverse } from '../src/reverseInteger';
 import { PalindromeNumber } from '../src/PalindromeNumber';
 import { IntegertoRomanNumeral } from '../src/IntegertoRomanNumeral';
 import { ContainerWithMostWater } from '../src/ContainerWithMostWater';
+import { threeSum } from '../src/3Sum';
 
 describe('> Problem TwoSum: #Easy', function(){
     it('target 4, listofNums[4, 3, 2, 0]: should return [0, 3]',function(){
@@ -256,7 +257,7 @@ describe('> Palindrome Number: ', function(){
     })
 });
 
-describe('> Continer with Most Water: ', function(){
+describe('> Container with Most Water: ', function(){
     it('input [3, 6]: should return 3', function(){
         let answer = 3;
         let actual = ContainerWithMostWater([3, 6]);
@@ -317,3 +318,19 @@ describe('> Integer to Roman Numeral', function(){
         
     });
 });
+
+// it wasn't easy making tests for these, since you can go about making combinations, so i decided to sort the list before hand
+// and compare the answer in a sorted manner.
+describe('> 3 Sum: ', function(){
+    it('input: [-1, 0, 1, 2, -1, -4] should return [[-1, 0, 1], [2, -1 -1]]', function(){
+        let answer = [[-1, -1, 2], [-1, 0, 1]];
+        let actual = threeSum([-1, 0, 1, 2, -1, -4]);
+        assert.deepEqual(actual, answer);
+    });
+    // TODO: I need to write more test cases here. regarding the three sum problem
+    it('input: [ 0, 0, 0] should return [[0, 0, 0]]', function(){
+        let answer = [[0, 0, 0]];
+        let actual = threeSum([0 , 0, 0]);
+        assert.deepEqual(actual, answer);
+    })
+})
