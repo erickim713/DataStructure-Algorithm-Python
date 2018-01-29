@@ -9,6 +9,7 @@ import { PalindromeNumber } from '../src/PalindromeNumber';
 import { IntegertoRomanNumeral } from '../src/IntegertoRomanNumeral';
 import { ContainerWithMostWater } from '../src/ContainerWithMostWater';
 import { threeSum } from '../src/3Sum';
+import { validParanthesis } from '../src/ValidParanthesis';
 
 describe('> Problem TwoSum: #Easy', function(){
     it('target 4, listofNums[4, 3, 2, 0]: should return [0, 3]',function(){
@@ -321,16 +322,72 @@ describe('> Integer to Roman Numeral', function(){
 
 // it wasn't easy making tests for these, since you can go about making combinations, so i decided to sort the list before hand
 // and compare the answer in a sorted manner.
+// TODO: Time limit exceeded. I need to make this one better.
 describe('> 3 Sum: ', function(){
     it('input: [-1, 0, 1, 2, -1, -4] should return [[-1, 0, 1], [2, -1 -1]]', function(){
         let answer = [[-1, -1, 2], [-1, 0, 1]];
         let actual = threeSum([-1, 0, 1, 2, -1, -4]);
         assert.deepEqual(actual, answer);
     });
-    // TODO: I need to write more test cases here. regarding the three sum problem
+    
     it('input: [ 0, 0, 0] should return [[0, 0, 0]]', function(){
         let answer = [[0, 0, 0]];
         let actual = threeSum([0 , 0, 0]);
         assert.deepEqual(actual, answer);
+    });
+});
+
+
+describe('> Valid Paranthesis: ', function(){
+    it('input: "()[]{}" should return true [basic case]', function(){
+        let answer = true;
+        let actual = validParanthesis('()[]{}');
+        assert.equal(actual, answer);
+    });
+
+    it('input: "([])" should return true [pair inside pair case]', function(){
+        let answer = true;
+        let actual = validParanthesis('([])');
+        assert.equal(actual, answer);
+    });
+
+    // fail cases;
+
+    it('input: "([)]" should return false [basic case]', function(){
+        let answer = false;
+        let actual = validParanthesis('([)]');
+        assert.equal(actual, answer);
+    });
+
+    it('input "([{}]))" should return false [extra character with no pair]', function (){
+        let answer = false;
+        let actual = validParanthesis('([{}]))');
+        assert.equal(actual, answer);
+    });
+
+    it('input "{)" [no pair]', function(){
+        let answer = false;
+        let actual = validParanthesis('{)');
+        assert.equal(actual, answer);
+    });
+});
+
+
+describe('> Merge Two Sorted Lists:', function(){
+    it('input: 1->2->4,  1->3->4: should return 1->1->2->3->4->4', function(){
+        let l1 = new ListNode(1);
+        l1.next = new ListNode(2);
+        l1.next.next = new ListNode(4);
+
+        let l2 = new ListNode(1);
+        l2.next = new ListNode(3);
+        l2.next.next = new ListNode(4);
+
+        let answer = new ListNode(1);
+        answer.next = new ListNode(1);
+        answer.next.next = new ListNode(2);
+        answer.next.next.next = new ListNode(3);
+        answer.next.next.next.next = new ListNode(4);
+        answer.next.next.next.next.next = new ListNode(4);
     })
 })
