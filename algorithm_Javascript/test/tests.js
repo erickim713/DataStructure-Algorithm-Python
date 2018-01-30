@@ -10,6 +10,7 @@ import { IntegertoRomanNumeral } from '../src/IntegertoRomanNumeral';
 import { ContainerWithMostWater } from '../src/ContainerWithMostWater';
 import { threeSum } from '../src/3Sum';
 import { validParanthesis } from '../src/ValidParanthesis';
+import { mergeTwoSortedLists } from '../src/MergeTwoSortedLists';
 
 describe('> Problem TwoSum: #Easy', function(){
     it('target 4, listofNums[4, 3, 2, 0]: should return [0, 3]',function(){
@@ -389,5 +390,57 @@ describe('> Merge Two Sorted Lists:', function(){
         answer.next.next.next = new ListNode(3);
         answer.next.next.next.next = new ListNode(4);
         answer.next.next.next.next.next = new ListNode(4);
-    })
-})
+        
+        let actual = mergeTwoSortedLists(l1, l2);
+
+        for(let i = 0; i<6; i++){
+            assert.equal(actual.val, answer.val);
+            actual = actual.next;
+            answer = answer.next;
+        }
+    });
+
+    it('input: 0->2->3,  -1->100->200: should return -1->0->2->3->100->200 [negative number included with just pasting the rest of the stuff]', function(){
+        let l1 = new ListNode(0);
+        l1.next = new ListNode(2);
+        l1.next.next = new ListNode(3);
+
+        let l2 = new ListNode(-1);
+        l2.next = new ListNode(100);
+        l2.next.next = new ListNode(200);
+
+        let answer = new ListNode(-1);
+        answer.next = new ListNode(0);
+        answer.next.next = new ListNode(2);
+        answer.next.next.next = new ListNode(3);
+        answer.next.next.next.next = new ListNode(100);
+        answer.next.next.next.next.next = new ListNode(200);
+
+        let actual = mergeTwoSortedLists(l1, l2);
+
+        for(let i = 0; i<6; i++){
+            assert.equal(actual.val, answer.val);
+            actual = actual.next;
+            answer = answer.next;
+        }
+    });
+
+    it('input: ,  1->3->4: should return 1->3->4 [one just normal list and one empty list]', function(){
+        let l1  = null;
+        let l2 = new ListNode(1);
+        l2.next = new ListNode(3);
+        l2.next.next = new ListNode(4);
+
+        let answer = new ListNode(1);
+        answer.next = new ListNode(3);
+        answer.next.next = new ListNode(4);
+
+        let actual = mergeTwoSortedLists(l1, l2);
+        for(let i = 0; i<3; i++){
+            assert.equal(actual.val, answer.val);
+            actual = actual.next;
+            answer = answer.next;
+        }
+    });
+});
+

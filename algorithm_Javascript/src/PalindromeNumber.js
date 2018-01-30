@@ -20,8 +20,6 @@ export function PalindromeNumber(x){
     while(x > reversedNumber){
         reversedNumber = reversedNumber * 10 + x % 10;
         x = Math.floor(x/10);
-    }
-    console.log('reversed number is: ', reversedNumber);
-    console.log('x number is: ', x);    
+    }  
     return reversedNumber === x || Math.floor(reversedNumber/10) === x;
 }
