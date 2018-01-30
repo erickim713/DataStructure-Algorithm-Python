@@ -11,6 +11,8 @@ import { ContainerWithMostWater } from '../src/ContainerWithMostWater';
 import { threeSum } from '../src/3Sum';
 import { validParanthesis } from '../src/ValidParanthesis';
 import { mergeTwoSortedLists } from '../src/MergeTwoSortedLists';
+import { removeElement } from '../src/RemoveElement';
+import { removeDuplicatesFromSortedArray } from '../src/RemoveDuplicatesFromSortedArray';
 
 describe('> Problem TwoSum: #Easy', function(){
     it('target 4, listofNums[4, 3, 2, 0]: should return [0, 3]',function(){
@@ -444,3 +446,40 @@ describe('> Merge Two Sorted Lists:', function(){
     });
 });
 
+describe('> Remove Element: ', function(){
+    it('input nums = [3,2,2,3], val = 3 should return number 2 [basic case]', function(){
+        let answer = 2;
+        let actual = removeElement([3,2,2,3], 3);
+        assert.equal(actual, answer);
+    });
+    it('input nums = [1,2,2,3], val = 4 should return number 4 [case when the value is not in the list]', function(){
+        let answer = 4;
+        let actual = removeElement([1,2,2,3], 4);
+        assert.equal(actual, answer);
+    });
+
+    it('input nums = [3,3,3,3], val = 3 should return number 0', function(){
+        let answer = 0;
+        let actual = removeElement([3,3,3,3], 3);
+        assert.equal(actual, answer);
+    });
+});
+
+describe('> Remove Duplicates From Sorted Array', function(){
+    it('input nums = [1,1,2] should return 2', function(){
+        let answer = 2;
+        let actual = removeDuplicatesFromSortedArray([1,1,2]);
+        assert.equal(actual, answer);
+    });
+    it('input nums = [1,3,5,6] should return 4 [no duplicates case]', function(){
+        let answer = 4;
+        let actual = removeDuplicatesFromSortedArray([1,3,5,6]);
+        assert.equal(actual, answer);
+    });
+
+    it('input nums = [1,1,1,1] should return 1 [all elements are same so everything but first is removed]', function(){
+        let answer = 1;
+        let actual = removeDuplicatesFromSortedArray([1,1,1,1]);
+        assert.equal(actual, answer);
+    });  
+});
