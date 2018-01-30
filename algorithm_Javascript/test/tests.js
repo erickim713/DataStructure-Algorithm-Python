@@ -13,6 +13,7 @@ import { validParanthesis } from '../src/ValidParanthesis';
 import { mergeTwoSortedLists } from '../src/MergeTwoSortedLists';
 import { removeElement } from '../src/RemoveElement';
 import { removeDuplicatesFromSortedArray } from '../src/RemoveDuplicatesFromSortedArray';
+import { strStr } from '../src/strStr()';
 
 describe('> Problem TwoSum: #Easy', function(){
     it('target 4, listofNums[4, 3, 2, 0]: should return [0, 3]',function(){
@@ -483,3 +484,24 @@ describe('> Remove Duplicates From Sorted Array', function(){
         assert.equal(actual, answer);
     });  
 });
+
+describe('> strStr', function(){
+    it('input: haystack = "hello", needle = "ll" should return 2 [basic test case]', function(){
+        let answer = 2;
+        let actual = strStr('hello', 'll');
+        assert.equal(actual, answer);
+    });
+
+    it('input: haystack = "aaaaa", needle = "bba" should return -1 [basic non-found test case]', function(){
+        let answer = -1;
+        let actual = strStr('aaaaa', 'bba');
+        assert.equal(actual, answer);
+    });
+
+    it('input haystack = "asfddsafsdf", needle = "" should return 0 [case where "always occuring" needle needs to be found]', function(){
+        let answer = 0;
+        let actual = strStr('asfddsafsdf', '');
+        assert.equal(actual, answer);
+    });
+
+})
