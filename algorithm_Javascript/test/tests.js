@@ -14,6 +14,7 @@ import { mergeTwoSortedLists } from '../src/MergeTwoSortedLists';
 import { removeElement } from '../src/RemoveElement';
 import { removeDuplicatesFromSortedArray } from '../src/RemoveDuplicatesFromSortedArray';
 import { strStr } from '../src/strStr()';
+import { searchInsertPosition } from '../src/SearchInsertPosition';
 
 describe('> Problem TwoSum: #Easy', function(){
     it('target 4, listofNums[4, 3, 2, 0]: should return [0, 3]',function(){
@@ -503,5 +504,27 @@ describe('> strStr', function(){
         let actual = strStr('asfddsafsdf', '');
         assert.equal(actual, answer);
     });
+});
 
-})
+describe('> search Insert Position', function(){
+    it('input: [1,3,5,6] target:5 should return 2', function(){
+        let answer = 2;
+        let actual = searchInsertPosition([1,3,5,6], 5);
+        assert.equal(actual, answer);
+    });
+    it('input: [1,3,5,6] target:2 should return 1', function(){
+        let answer = 1;
+        let actual = searchInsertPosition([1,3,5,6], 2);
+        assert.equal(actual, answer);
+    });
+    it('input: [1,3,5,6] target:7 should return 4', function(){
+        let answer = 4;
+        let actual = searchInsertPosition([1,3,5,6], 7);
+        assert.equal(actual, answer);
+    });
+    it('input: [1,3,5,6] target:0 should return 0', function(){
+        let answer = 0;
+        let actual = searchInsertPosition([1,3,5,6], 0);
+        assert.equal(actual, answer);
+    });
+});
