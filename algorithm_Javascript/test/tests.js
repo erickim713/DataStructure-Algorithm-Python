@@ -15,6 +15,10 @@ import { removeElement } from '../src/RemoveElement';
 import { removeDuplicatesFromSortedArray } from '../src/RemoveDuplicatesFromSortedArray';
 import { strStr } from '../src/strStr()';
 import { searchInsertPosition } from '../src/SearchInsertPosition';
+import { addBinary } from '../src/AddBinary';
+import { mySqrt } from '../src/Sqrtx';
+import { climbStairs } from '../src/ClimbStairs';
+
 
 describe('> Problem TwoSum: #Easy', function(){
     it('target 4, listofNums[4, 3, 2, 0]: should return [0, 3]',function(){
@@ -527,4 +531,80 @@ describe('> search Insert Position', function(){
         let actual = searchInsertPosition([1,3,5,6], 0);
         assert.equal(actual, answer);
     });
+});
+
+
+
+describe('> Add Binary:', function(){
+    it('input: 11 and 1 should return 100', function(){
+        let a = '11';
+        let b = '1';
+        let answer = '100';
+        let actual = addBinary(a,b);
+        assert.equal(actual, answer);
+    });
+    
+    it('input: 101 and 1111 should return 10100', function(){
+        let a = '101';
+        let b = '1111';
+        let answer = '10100';
+        let actual = addBinary(a, b);
+        assert.equal(actual, answer);
+    });
+
+    it('input: 0 and 10101 should return 10101', function(){
+        let a = '0';
+        let b = '10101';
+        let answer = '10101';
+        let actual = addBinary(a, b);
+        assert.equal(actual, answer);
+    });
+});
+
+
+describe('> mySqrt: ', function(){
+    it('input: 5 should return 2', function(){
+        let answer = 2;
+        let actual = mySqrt(5);
+        assert.equal(actual, answer);
+    });
+
+    it('input: 100 should return 10', function(){
+        let answer = 10;
+        let actual = mySqrt(100);
+        assert.equal(actual, answer);
+    });
+
+    it('input: 99 should return 9', function(){
+        let answer = 9;
+        let actual = mySqrt(99);
+        assert.equal(actual, answer);
+    });
+});
+
+describe('> Climb Stairs: ', function(){
+    it('input: 2 should return 2', function(){
+        let answer = 2;
+        let actual = climbStairs(2);
+        assert.equal(actual, answer);
+    });
+
+    it('input: 3 should return 3', function(){
+        let answer = 3;
+        let actual = climbStairs(3);
+        assert.equal(actual, answer);
+    });
+
+    it('input: 0 should return 0', function(){
+        let answer = 0;
+        let actual = climbStairs(0);
+        assert.equal(actual, answer);
+    });
+
+    it('input: 5 should return 8', function(){
+        let answer = 8;
+        let actual = climbStairs(5);
+        assert.equal(actual, answer);
+    })
+
 });
