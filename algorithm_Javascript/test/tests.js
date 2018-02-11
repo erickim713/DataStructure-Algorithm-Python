@@ -18,6 +18,7 @@ import { searchInsertPosition } from '../src/SearchInsertPosition';
 import { addBinary } from '../src/AddBinary';
 import { mySqrt } from '../src/Sqrtx';
 import { climbStairs } from '../src/ClimbStairs';
+import { isSameTree, TreeNode } from '../src/SameTree';
 
 
 describe('> Problem TwoSum: #Easy', function(){
@@ -605,6 +606,21 @@ describe('> Climb Stairs: ', function(){
         let answer = 8;
         let actual = climbStairs(5);
         assert.equal(actual, answer);
-    })
-
+    });
 });
+
+describe('> Same Tree: ', function(){
+    it('input: when two trees are same, it should return true [i am not sure on what to write for this test...]', function(){
+        let q = new TreeNode(4);
+        q.left = new TreeNode(1);
+        q.right = new TreeNode(5);
+
+        let p = new TreeNode(4);
+        p.left = new TreeNode(1);
+        p.right = new TreeNode(5);
+
+        let answer = true;
+        let actual = isSameTree(p, q);
+        assert.equal(actual, answer);
+    });
+})
