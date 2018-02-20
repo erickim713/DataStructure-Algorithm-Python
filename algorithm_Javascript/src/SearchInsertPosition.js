@@ -29,31 +29,31 @@ export function searchInsertPosition(nums, target){
     if(nums.length === 0){
         return 0;
     }
-    let centerIdx = Math.ceil(nums.length/2); //round down the number;
+    let centerIdx = Math.floor((nums.length-1)/2); 
     let firstIdx = 0;
     let lastIdx = nums.length - 1;
-    while(true){
-        if(firstIdx === lastIdx){
-            if(nums[firstIdx] > target){
-                if(firstIdx === 0){
-                    return 0;
-                }
-                else{
-                    return firstIdx - 1;
-                }
-            }
-            else{
+    while(firstIdx <= lastIdx){
+        if(firstIdx == lastIdx){
+            if(target > nums[firstIdx]){
                 return firstIdx + 1;
             }
+            else{
+                return firstIdx;
+            }
         }
-        if(nums[centerIdx] > target){
+        if(nums[centerIdx] == target){
+            return centerIdx;
+        }
+        else if(nums[centerIdx] > target){
             lastIdx = centerIdx - 1;
-            centerIdx = Math.ceil((lastIdx + firstIdx )/2);
+            centerIdx = Math.floor((firstIdx + lastIdx)/2);
         }
         else{
             firstIdx = centerIdx + 1;
-            centerIdx = Math.floor((lastIdx + firstIdx )/2);
-        }
+            centerIdx = Math.floor((firstIdx + lastIdx )/2);
+        }   
     }
+    return firstIdx;
 }
+
 

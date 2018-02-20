@@ -19,6 +19,8 @@ import { addBinary } from '../src/AddBinary';
 import { mySqrt } from '../src/Sqrtx';
 import { climbStairs } from '../src/ClimbStairs';
 import { isSameTree, TreeNode } from '../src/SameTree';
+import { findMedianSortedArrays } from '../src/MedianOfTwoSortedList';
+import { countAndSay } from '../src/CountandSay';
 
 
 describe('> Problem TwoSum: #Easy', function(){
@@ -532,6 +534,21 @@ describe('> search Insert Position', function(){
         let actual = searchInsertPosition([1,3,5,6], 0);
         assert.equal(actual, answer);
     });
+    it('input: [1] target: 1 should return 1', function(){
+        let answer = 0;
+        let actual = searchInsertPosition([1], 0);
+        assert.equal(actual, answer);
+    });
+    it('input: [1, 3] target: 3 should return 1', function(){
+        let answer = 1;
+        let actual = searchInsertPosition([1, 3], 3);
+        assert.equal(actual, answer);
+    });
+    it('input: [1, 3] target: 0 should return 0', function(){
+        let answer = 0;
+        let actual = searchInsertPosition([1, 3], 0);
+        assert.equal(actual, answer);
+    })
 });
 
 
@@ -621,6 +638,58 @@ describe('> Same Tree: ', function(){
 
         let answer = true;
         let actual = isSameTree(p, q);
+        assert.equal(actual, answer);
+    });
+});
+
+describe('> Median of Two Sorted List: ', function(){
+    it('input: [1, 3] and [2] should return 2.0', function(){
+        let answer = 2.0;
+        let actual = findMedianSortedArrays([1,3], [2]);
+        assert.equal(actual, answer);
+    });
+
+    it('input: [1, 2] and [3, 4] should return 2.5', function(){
+        let answer = 2.5;
+        let actual = findMedianSortedArrays([1,2], [3,4]);
+        assert.equal(actual, answer);
+    });
+
+    it('input: [] and [1, 2] should return 1.5', function(){
+        let answer = 1.5;
+        let actual = findMedianSortedArrays([], [1,2]);
+        assert.equal(actual, answer);
+    });
+
+    it('input: [1, 5] and [2,3,4] should return 3', function(){
+        let answer = 3;
+        let actual = findMedianSortedArrays([1, 5], [2, 3, 4]);
+        assert.equal(actual, answer);
+    });
+
+   
+    // i am assuming that there are no empty array collections 
+});
+
+describe('> Count and Say: ', function(){
+    it('input n = 1 should return "1"', function(){
+        let answer = '1';
+        let actual = countAndSay(1);
+        assert.equal(actual, answer);
+    });
+    it('input n = 2 should return "11"', function(){
+        let answer = '11';
+        let actual = countAndSay(2);
+        assert.equal(actual, answer);
+    });
+    it('input n = 3 should return "21"', function(){
+        let answer = '21';
+        let actual = countAndSay(3);
+        assert.equal(actual, answer);
+    });
+    it('input n = 4 should return "1211"', function(){
+        let answer = '1211';
+        let actual = countAndSay(4);
         assert.equal(actual, answer);
     });
 })
