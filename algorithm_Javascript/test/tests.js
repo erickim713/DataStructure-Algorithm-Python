@@ -21,6 +21,8 @@ import { climbStairs } from '../src/ClimbStairs';
 import { isSameTree, TreeNode } from '../src/SameTree';
 import { findMedianSortedArrays } from '../src/MedianOfTwoSortedList';
 import { countAndSay } from '../src/CountandSay';
+import { lengthOfLastWord } from '../src/LengthofLastWord';
+import { maxSubArray } from '../src/MaxSubArray';
 
 
 describe('> Problem TwoSum: #Easy', function(){
@@ -692,4 +694,55 @@ describe('> Count and Say: ', function(){
         let actual = countAndSay(4);
         assert.equal(actual, answer);
     });
-})
+});
+
+
+describe('> Max Sub Array: ', function(){
+    it("input string 'hello world' should return 5", function(){
+        let answer = 5;
+        let actual = lengthOfLastWord('hello world');
+        assert.equal(actual, answer);
+    });
+    it("input string 'i world' should return 5", function(){
+        let answer = 5;
+        let actual = lengthOfLastWord('i world');
+        assert.equal(actual, answer);
+    });
+    it("input string 'world i' should return 5", function(){
+        let answer = 1;
+        let actual = lengthOfLastWord('world i');
+        assert.equal(actual, answer);
+    });
+    it("input string 'as eieie' should return 5", function(){
+        let answer = 5;
+        let actual = lengthOfLastWord('as eieie');
+        assert.equal(actual, answer);
+    });
+});
+
+
+describe('> max Subarray: ', function(){
+    it('input [-2,1,-3,4,-1,2,1,-5,4] should return 6', function(){
+        let answer = 6;
+        let actual = maxSubArray([-2,1,-3,4,-1,2,1,-5,4]);
+        assert.equal(actual, answer);
+    });
+
+    it('input [1, 3,3,3,3,3] should return 16', function(){
+        let answer = 16; 
+        let actual = maxSubArray([1,3,3,3,3,3]);
+        assert.equal(actual, answer);
+    });
+    
+    it('input [-3, 4, 1, -19, 2, 5] should return 7', function(){
+        let answer = 7;
+        let actual = maxSubArray([-3, 4, 1 -19, 2, 5]);
+        assert.equal(actual, answer);
+    });
+
+    it('input [-3, -4 , -5 , -6] should return -3', function(){
+        let answer = -3;
+        let actual = maxSubArray([-3, -4, -5, -6]);
+        assert.equal(actual, answer);
+    });
+});
