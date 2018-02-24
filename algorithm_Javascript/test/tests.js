@@ -23,6 +23,7 @@ import { findMedianSortedArrays } from '../src/MedianOfTwoSortedList';
 import { countAndSay } from '../src/CountandSay';
 import { lengthOfLastWord } from '../src/LengthofLastWord';
 import { maxSubArray } from '../src/MaxSubArray';
+import {plusOne} from '../src/PlusOne';
 
 
 describe('> Problem TwoSum: #Easy', function(){
@@ -745,4 +746,24 @@ describe('> max Subarray: ', function(){
         let actual = maxSubArray([-3, -4, -5, -6]);
         assert.equal(actual, answer);
     });
+});
+
+describe('> plus one: ', function(){
+    it('input [9, 9, 9] should return array collection with length of 4: [1, 0, 0, 0]', function(){
+        let answer = [1, 0, 0, 0];
+        let actual = plusOne([9,9,9]);
+        assert.deepEqual(actual, answer);
+    });
+
+    it('input [0] should return array collection length of 1: [1]', function(){
+        let answer = [1];
+        let actual = plusOne([0]);
+        assert.deepEqual(actual, answer);
+    });
+
+    it('input [2, 5] should return array collection with length of 2: [2, 6]', function(){
+        let answer = [2, 6];
+        let actual = plusOne([2, 5]);
+        assert.deepEqual(actual, answer);
+    })
 });
