@@ -24,6 +24,8 @@ import { countAndSay } from '../src/CountandSay';
 import { lengthOfLastWord } from '../src/LengthofLastWord';
 import { maxSubArray } from '../src/MaxSubArray';
 import {plusOne} from '../src/PlusOne';
+import { removeDuplicatesFromSortedList } from '../src/RemoveDuplicatesFromSortedList';
+import { mergeSortedList } from '../src/MergeSortedList';
 
 
 describe('> Problem TwoSum: #Easy', function(){
@@ -645,34 +647,34 @@ describe('> Same Tree: ', function(){
     });
 });
 
-describe('> Median of Two Sorted List: ', function(){
-    it('input: [1, 3] and [2] should return 2.0', function(){
-        let answer = 2.0;
-        let actual = findMedianSortedArrays([1,3], [2]);
-        assert.equal(actual, answer);
-    });
+// describe('> Median of Two Sorted List: ', function(){
+//     it('input: [1, 3] and [2] should return 2.0', function(){
+//         let answer = 2.0;
+//         let actual = findMedianSortedArrays([1,3], [2]);
+//         assert.equal(actual, answer);
+//     });
 
-    it('input: [1, 2] and [3, 4] should return 2.5', function(){
-        let answer = 2.5;
-        let actual = findMedianSortedArrays([1,2], [3,4]);
-        assert.equal(actual, answer);
-    });
+//     it('input: [1, 2] and [3, 4] should return 2.5', function(){
+//         let answer = 2.5;
+//         let actual = findMedianSortedArrays([1,2], [3,4]);
+//         assert.equal(actual, answer);
+//     });
 
-    it('input: [] and [1, 2] should return 1.5', function(){
-        let answer = 1.5;
-        let actual = findMedianSortedArrays([], [1,2]);
-        assert.equal(actual, answer);
-    });
+//     it('input: [] and [1, 2] should return 1.5', function(){
+//         let answer = 1.5;
+//         let actual = findMedianSortedArrays([], [1,2]);
+//         assert.equal(actual, answer);
+//     });
 
-    it('input: [1, 5] and [2,3,4] should return 3', function(){
-        let answer = 3;
-        let actual = findMedianSortedArrays([1, 5], [2, 3, 4]);
-        assert.equal(actual, answer);
-    });
+//     it('input: [1, 5] and [2,3,4] should return 3', function(){
+//         let answer = 3;
+//         let actual = findMedianSortedArrays([1, 5], [2, 3, 4]);
+//         assert.equal(actual, answer);
+//     });
 
    
-    // i am assuming that there are no empty array collections 
-});
+//     // i am assuming that there are no empty array collections 
+// });
 
 describe('> Count and Say: ', function(){
     it('input n = 1 should return "1"', function(){
@@ -765,5 +767,59 @@ describe('> plus one: ', function(){
         let answer = [2, 6];
         let actual = plusOne([2, 5]);
         assert.deepEqual(actual, answer);
-    })
+    });
 });
+
+describe('Remove Duplicates from Sorted List: ', function(){
+    it('input 1-> 1-> 2, should return 1->2', function(){
+        let answer = new ListNode(1);
+        answer.next = new ListNode(2);
+
+        let input = new ListNode(1);
+        input.next = new ListNode(1);
+        input.next.next = new ListNode(2);
+        
+        let actual = removeDuplicatesFromSortedList(input);
+
+        for(let count = 0; count < 2; count++){
+            assert.equal(actual.val, answer.val);
+            actual = actual.next;
+            answer = answer.next;
+        }
+    });
+
+
+    it('input 1->1->2->3->3 should return 1->2->3', function(){
+        let answer = new ListNode(1);
+        answer.next = new ListNode(2); 
+        answer.next.next = new ListNode(3);
+
+        let input = new ListNode(1);
+        input.next = new ListNode(1);
+        input.next.next = new ListNode(2);
+        input.next.next.next = new ListNode(3);
+        input.next.next.next.next = new ListNode(3);
+
+        let actual = removeDuplicatesFromSortedList(input);
+
+        for(let count = 0; count < 3; count++){
+            assert.equal(actual.val, answer.val);
+            actual = actual.next;
+            answer = answer.next;
+        }
+    });
+});
+
+describe('merge sorted list: ', function(){
+    it('input nums1 =  [1, 5, 7, 10], nums2 = [2, 5, 7, 9] should return:\n [1, 2, 5, 5, 7, 9 , 10]', function(){
+        let answer = [1, 2, 5, 5, 7, 9, 10];
+        let actual = mergeSortedList([1,5,7,10],4, [2, 5, 7, 9],4);
+        assert.deepEqual(actual, answer);
+    });
+
+    it('input nums1 = [], nums2 =[1,2,3,5]', function(){
+        let answer = [1, 2, 3, 5];
+        let actual = mergeSortedList([], 0, [1,2,3,5], 4);
+        assert.deepEqual(actual, answer);
+    })
+})
