@@ -26,6 +26,9 @@ import { maxSubArray } from '../src/MaxSubArray';
 import {plusOne} from '../src/PlusOne';
 import { removeDuplicatesFromSortedList } from '../src/RemoveDuplicatesFromSortedList';
 import { mergeSortedList } from '../src/MergeSortedList';
+import { symmetricTree } from '../src/SymmetricTree';
+import { generatePasTri1 } from '../src/PascalTri';
+import { getRow } from '../src/PascalTri2';
 
 
 describe('> Problem TwoSum: #Easy', function(){
@@ -810,16 +813,36 @@ describe('Remove Duplicates from Sorted List: ', function(){
     });
 });
 
-describe('merge sorted list: ', function(){
-    it('input nums1 =  [1, 5, 7, 10], nums2 = [2, 5, 7, 9] should return:\n [1, 2, 5, 5, 7, 9 , 10]', function(){
-        let answer = [1, 2, 5, 5, 7, 9, 10];
-        let actual = mergeSortedList([1,5,7,10],4, [2, 5, 7, 9],4);
+
+describe('> PasCal Triangle Generation:  ', function(){
+    it('input : 5 should generate pascal triangle up to fifth level.', function(){
+        let answer = 
+        [
+            [1],
+            [1,1],
+            [1,2,1],
+            [1,3,3,1],
+            [1,4,6,4,1]
+        ]
+        let actual = generatePasTri1(5);
         assert.deepEqual(actual, answer);
     });
 
-    it('input nums1 = [], nums2 =[1,2,3,5]', function(){
-        let answer = [1, 2, 3, 5];
-        let actual = mergeSortedList([], 0, [1,2,3,5], 4);
+    it('input: 1 should generate pascal triangle up to first level', function(){
+        let answer = 
+        [
+            [1]
+        ];
+        let actual = generatePasTri1(1);
+        assert.deepEqual(actual, answer);
+    });
+});
+
+
+describe('> Pascal Triangle get Row: ', function(){
+    it('input: k = 3, should return [1,3,3,1]', function(){
+        let answer = [1,3,3,1];
+        let actual = getRow(3);
         assert.deepEqual(actual, answer);
     })
 })
