@@ -815,7 +815,7 @@ describe('Remove Duplicates from Sorted List: ', function(){
 
 
 describe('> PasCal Triangle Generation:  ', function(){
-    it('input : 5 should generate pascal triangle up to fifth level.', function(){
+    it('input : 5 should generate pascal ccctriangle up to fifth level.', function(){
         let answer = 
         [
             [1],
